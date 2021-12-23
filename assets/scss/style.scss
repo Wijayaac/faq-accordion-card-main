@@ -1,0 +1,189 @@
+@import "config";
+
+html {
+  font-size: 80%;
+}
+
+body {
+  background: linear-gradient(0deg, $soft-blue, $soft-violet);
+  font-family: $main-font;
+}
+
+.container-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  margin-top: 0;
+  @include breakpoint-down(small) {
+    margin-top: 30px;
+  }
+}
+
+.faq {
+  position: relative;
+  background-color: $light-blue;
+  max-width: 920px;
+  max-height: 505px;
+  border-radius: 30px;
+  @include breakpoint-down(small) {
+    max-height: 520px;
+  }
+  &__container {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    min-height: 400px;
+    min-width: 920px;
+    padding: 45px 0;
+    overflow: hidden;
+    @include breakpoint-down(small) {
+      flex-wrap: wrap;
+      min-width: 320px;
+      max-width: 350px;
+      padding: 90px 0 0 0;
+    }
+  }
+  &__image {
+    position: relative;
+    width: 80%;
+    @include breakpoint-down(small) {
+      width: 100%;
+    }
+  }
+  &__text {
+    width: 80%;
+    margin: 0 20px;
+    @include breakpoint-down(small) {
+      width: 100%;
+      margin: 0;
+    }
+  }
+  &__bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-85%, -56%);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 950px;
+    width: 950px;
+    @include breakpoint-down(small) {
+      top: 10%;
+      transform: translate(-50%, -50%);
+      width: 230px;
+      height: 100px;
+      object-fit: contain;
+    }
+  }
+  &__main-image {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    transform: translate(-16%, -11%);
+    object-fit: contain;
+    width: 460px;
+    height: 460px;
+    @include breakpoint-down(small) {
+      left: 50%;
+      transform: translate(-50%, -58%);
+      width: 230px;
+      height: 230px;
+    }
+  }
+  &__secondary-image {
+    position: absolute;
+    z-index: 3;
+    left: 0;
+    top: 50%;
+    transform: translate(-48%, -32%);
+    object-fit: contain;
+    width: 150px;
+  }
+  &__list-item {
+    width: 400px;
+    height: 350px;
+    margin: 15px 0 10px 0;
+    padding: 10px 0;
+    @include breakpoint-down(small) {
+      width: 300px;
+      height: 100%;
+      margin: 0 10px;
+      padding: 10px 10px;
+    }
+    .faq__item.active .faq__title {
+      font-weight: $heading-weight;
+    }
+    .faq__item.active .faq__content {
+      height: 60px;
+    }
+    .faq__item.active .faq__title::before {
+      content: "︿";
+      font-family: "Courier New", Courier, monospace;
+      color: $soft-red;
+      font-weight: $heading-weight;
+    }
+  }
+  &__heading {
+    font-size: 2.5rem;
+    text-align: left;
+    margin-top: 0;
+    @include breakpoint-down(small) {
+      margin-top: 20px;
+      text-align: center;
+    }
+  }
+  &__item {
+    position: relative;
+    margin: 10px;
+  }
+  &__title {
+    position: relative;
+    padding: 0.83em 0;
+    cursor: pointer;
+    color: $desaturated-blue;
+    transition: all ease 0.3s;
+    &:hover {
+      color: $soft-red;
+      font-weight: $heading-weight;
+    }
+    &::before {
+      content: "﹀";
+      position: absolute;
+      top: 60%;
+      right: -5px;
+      transform: translateY(-50%);
+      color: $soft-red;
+      font-weight: $heading-weight;
+    }
+  }
+  &__content {
+    position: relative;
+    height: 0;
+    text-align: justify;
+    overflow: hidden;
+    transition: 0.5s;
+    color: $dark-blue;
+  }
+  hr {
+    width: 100%;
+    margin-left: 0;
+    color: $dark-blue;
+  }
+}
+
+.is-mobile {
+  display: block;
+  @include breakpoint-up(medium) {
+    display: none;
+  }
+}
+
+.is-desktop {
+  display: none;
+  @include breakpoint-up(medium) {
+    display: block;
+  }
+}
